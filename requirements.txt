@@ -1,0 +1,6 @@
+scikit-learn
+matplotlib
+seaborn
+joblib
+dvc
+dvc-gdrive

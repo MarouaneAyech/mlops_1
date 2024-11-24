@@ -1,0 +1,2 @@
+Score R2 sur train : 0.96
+Score R2 sur test : 0.97
