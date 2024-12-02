@@ -83,8 +83,8 @@ def extract_year(date):
 preprocessor = ColumnTransformer(
     transformers=[
         ('pipeline_num', pipeline_num, ['size_m2', 'num_bedrooms', 'num_bathrooms', 'distance_school','public_transport_access', 'property_tax']),
-        ('onehot', OneHotEncoder(sparse_output=False), ['city']),  # OneHotEncoder sur la colonne catégorielle
-        ('year', FunctionTransformer(extract_year), 'date_built')  # Extraction de l'année sur la colonne date
+        # ('onehot', OneHotEncoder(sparse_output=False), ['city']),  # OneHotEncoder sur la colonne catégorielle
+        # ('year', FunctionTransformer(extract_year), 'date_built')  # Extraction de l'année sur la colonne date
     ]
 )
 
@@ -94,8 +94,8 @@ preprocessor = ColumnTransformer(
 # %%
 pipeline_global = Pipeline(steps=[
     ('preprocessor', preprocessor),          # Étape de prétraitement
-    ('scaling', StandardScaler()),            # Normalisation
-    ('pca', PCA()),              # Réduction dimensionnelle
+    # ('scaling', StandardScaler()),            # Normalisation
+    # ('pca', PCA()),              # Réduction dimensionnelle
     ('regressor', LinearRegression())
 ])
 pipeline_global
