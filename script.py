@@ -94,8 +94,8 @@ preprocessor = ColumnTransformer(
 # %%
 pipeline_global = Pipeline(steps=[
     ('preprocessor', preprocessor),          # Étape de prétraitement
-    # ('scaling', StandardScaler()),            # Normalisation
-    # ('pca', PCA()),              # Réduction dimensionnelle
+    ('scaling', StandardScaler()),            # Normalisation
+    ('pca', PCA()),              # Réduction dimensionnelle
     ('regressor', LinearRegression())
 ])
 pipeline_global
