@@ -71,8 +71,8 @@ def to_dataframe_with_columns(X, columns):
 
 pipeline_num = Pipeline(steps=[
     ('nan_imputer_num', SimpleImputer(strategy='mean')),  # Imputation des NaN
-    # ('to_dataframe', FunctionTransformer(to_dataframe_with_columns, kw_args={'columns': cols_num})),
-    # ('outlier_imputer_num', outlier_imputer_num)
+    ('to_dataframe', FunctionTransformer(to_dataframe_with_columns, kw_args={'columns': cols_num})),
+    ('outlier_imputer_num', outlier_imputer_num)
 ])
 
 # %%
