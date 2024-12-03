@@ -22,7 +22,8 @@ jobs:
         run: |
             # Exécuter dvc pull pour télécharger les artefacts
             dvc pull
-
-            # Lister les fichiers pour vérifier que les artefacts ont été téléchargés
-            ls -l ./data
-            ls -l ./models
+      - name : Entraîner le modèle et gérer les données avec DVC
+        run: |
+            python script.py
+            dvc add ./data/ ./models/
+            dvc push
