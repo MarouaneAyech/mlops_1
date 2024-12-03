@@ -13,4 +13,8 @@ jobs:
         run: |
           echo "Files in the repository:"
           ls -la
-    
+      # Étape 3 : Écrire un message dans un fichier
+      - name: Write message to file
+        run: |
+          echo "Hello, this is a test message!" > output.txt
+          cat output.txt
