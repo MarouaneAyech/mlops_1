@@ -6,9 +6,14 @@ jobs:
     steps:
       # Étape 1 : Cloner le dépôt
       - uses: actions/checkout@v3
-      # Installer Python
+      # Etape 2 : Installer Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      - name : vérifier la evrsion du Python
-        run: python --version
+      # Etape 3 : Installer les dépendences du Python
+      - name : Installer les dépendences
+        run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+      - name : Lister les dependences
+        run: pip list
