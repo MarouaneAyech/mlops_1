@@ -3,6 +3,8 @@ on: [push]
 jobs:
   run:
     runs-on: ubuntu-latest
+    env:
+      GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
     steps:
       # Étape 1 : Cloner le dépôt
       - uses: actions/checkout@v3
@@ -17,11 +19,10 @@ jobs:
             pip install -r requirements.txt
       # Étape 4 : Télécharger les artifacts données (data & models) avec DVC
       - name: Télécharger les artifacts des données
-        env:
-          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
         run: |
             # Exécuter dvc pull pour télécharger les artefacts
             dvc pull
+      # Etape 5 : 
       - name : Entraîner le modèle et gérer les données avec DVC
         run: |
             python script.py
