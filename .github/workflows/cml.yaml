@@ -17,6 +17,11 @@ jobs:
         run: |
             python -m pip install --upgrade pip
             pip install -r requirements.txt
+      # Étape 6 : Installer Node.js et CML
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - uses: iterative/setup-cml@v1
       # Étape 4 : Télécharger les artifacts données (data & models) avec DVC
       - name: Télécharger les artifacts des données
         run: |
@@ -28,3 +33,13 @@ jobs:
             python script.py
             dvc add ./data/ ./models/
             dvc push
+      # Étape 6 : Installer Node.js et CML
+      - name: Generate Report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get the report
+          echo "## Metrics" > report.md
+          cat metrics.txt >> report.md
+          # awk 'NR%4{print "    " $0}{print ""}' metrics.txt >> report.md
+          cml comment create report.md
