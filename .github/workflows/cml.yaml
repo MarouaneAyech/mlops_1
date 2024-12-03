@@ -6,13 +6,9 @@ jobs:
     steps:
       # Étape 1 : Cloner le dépôt
       - uses: actions/checkout@v3
-      # Étape 2 : Lister les fichiers clonés
-      - name: List files in repository
-        run: |
-          echo "Files in the repository:"
-          ls -la
-      # Étape 3 : Écrire un message dans un fichier
-      - name: Write message to file
-        run: |
-          echo "Hello, this is a test message!" > output.txt
-          cat output.txt
+      # Installer Python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name : vérifier la evrsion du Python
+        run: python --version
