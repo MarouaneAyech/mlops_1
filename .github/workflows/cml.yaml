@@ -15,5 +15,13 @@ jobs:
         run: |
             python -m pip install --upgrade pip
             pip install -r requirements.txt
-      - name : Lister les dependences
-        run: pip list
+      # Étape 4 : Préparer l'environnement et télécharger les données avec DVC
+      - name: Prepare Environment
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+        run: |
+            # Exécuter dvc pull pour télécharger les artefacts
+            dvc pull
+
+            # Lister les fichiers pour vérifier que les artefacts ont été téléchargés
+            ls -l
