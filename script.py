@@ -140,22 +140,22 @@ grid_search.fit(X_train, y_train)
 
 # %%
 # Rapport détaillé du tuning (toutes les pipelines triés par ordre decroissant)
-cv_results = pd.DataFrame(grid_search.cv_results_).sort_values(by='rank_test_score')
-print(cv_results[['params', 'mean_test_score', 'std_test_score','rank_test_score']])
+# cv_results = pd.DataFrame(grid_search.cv_results_).sort_values(by='rank_test_score')
+# print(cv_results[['params', 'mean_test_score', 'std_test_score','rank_test_score']])
 
-# %%
-# Meilleurs paramètres et scores de Gridsearch
-print("Meilleurs paramètres :", grid_search.best_params_)
-print("Meilleur score de validation R² :", grid_search.best_score_)
-print("Meilleur score de validation R² :", grid_search.best_score_)
+# # %%
+# # Meilleurs paramètres et scores de Gridsearch
+# print("Meilleurs paramètres :", grid_search.best_params_)
+# print("Meilleur score de validation R² :", grid_search.best_score_)
+# print("Meilleur score de validation R² :", grid_search.best_score_)
 
-# Évaluer sur les données de train
-train_score = grid_search.score(X_train, y_train)
-print("Score R² sur train :", train_score)
+# # Évaluer sur les données de train
+# train_score = grid_search.score(X_train, y_train)
+# print("Score R² sur train :", train_score)
 
-# Évaluer sur les données de test
-test_score = grid_search.score(X_test, y_test)
-print("Score R² sur test :", test_score)
+# # Évaluer sur les données de test
+# test_score = grid_search.score(X_test, y_test)
+# print("Score R² sur test :", test_score)
 
 # %%
 # Meilleur pipeline
